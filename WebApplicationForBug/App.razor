@@ -1,0 +1,27 @@
+<span @onkeydown="Callback">
+    @if (showInput)
+    {
+        <input type="text" value="@value" @onchange="Callback3"/>
+    }
+</span>
+
+
+@code {
+    private bool showInput = true;
+    private string value = "hi";
+
+    private void Callback(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+            showInput = false;
+        }
+    }
+
+    private void Callback3(ChangeEventArgs obj)
+    {
+        showInput = false;
+        value = (string) obj.Value;
+    }
+
+}
